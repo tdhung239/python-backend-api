@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "fresher05"
+version = "0.1.0"
+description = ""
+authors = ["AnhPhamRepository <anhplt3979@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+fastapi = "^0.68.2"
+uvicorn = "^0.15.0"
+SQLAlchemy = "^1.4.25"
+alembic = "^1.7.4"
+mysql = "^0.0.3"
+PyMySQL = "^1.0.2"
+python-dotenv = "^0.19.1"
+jose = "^1.0.0"
+python-jose = "^3.3.0"
+python-multipart = "^0.0.5"
+orjson = "^3.6.4"
+bcrypt = "^3.2.0"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

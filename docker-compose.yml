@@ -1,0 +1,38 @@
+# For local development
+version: "3"
+
+networks:
+    internal:
+        driver: bridge
+services:
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: admin
+      MYSQL_DATABASE: fresher_05
+      MYSQL_USER: fresher-usr
+      MYSQL_PASSWORD: Aa123456
+    ports:
+      - "3366:3306"
+    command: --default-authentication-plugin=mysql_native_password --explicit-defaults-for-timestamp=ON
+    volumes:
+      - mysql-data:/var/lib/mysql
+  backend:
+    build: .
+    command: uvicorn main:app --host 0.0.0.0 --port 9000 --log-level info
+    environment:
+      MYSQL_HOST: db
+      MYSQL_PORT: 3306
+      MYSQL_DBNAME: hybrid_tech_post
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: Aa123456@
+    ports:
+      - 9000:9000
+    networks:
+      - internal
+    depends_on:
+      - db
+    image: ht_quiz_system:latest
+volumes:
+  mysql-data:
+    driver: local
